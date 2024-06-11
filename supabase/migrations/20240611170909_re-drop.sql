@@ -11,7 +11,8 @@ create table "public"."address" (
 
 create table "public"."area" (
     "id" uuid not null default gen_random_uuid(),
-    "name" character varying not null
+    "name" character varying not null,
+    "state_id" uuid not null
 );
 
 
@@ -120,21 +121,20 @@ create table "public"."product_yard" (
 
 create table "public"."state" (
     "id" uuid not null default gen_random_uuid(),
-    "county_id" uuid not null,
     "name" character varying not null
 );
 
 
 create table "public"."tax_rate" (
     "id" uuid not null default gen_random_uuid(),
-    "state_id" uuid not null,
     "zipcode" character varying not null,
     "tax_region_name" character varying not null,
     "state_rate" numeric not null default 0.06,
     "county_rate" numeric not null default 0.0025,
     "city_rate" numeric not null default 0,
     "special_rate" numeric not null default 0.0325,
-    "risk_level" integer not null default 0
+    "risk_level" integer not null default 0,
+    "county_id" uuid not null
 );
 
 
@@ -163,9 +163,9 @@ create table "public"."visitor" (
 create table "public"."yard" (
     "id" uuid not null default gen_random_uuid(),
     "vendor_id" uuid not null,
-    "state_id" uuid not null,
     "name" character varying not null,
-    "address" character varying not null
+    "address" character varying not null,
+    "county_id" uuid not null
 );
 
 
@@ -243,6 +243,10 @@ alter table "public"."address" add constraint "address_user_detail_id_fkey" FORE
 
 alter table "public"."address" validate constraint "address_user_detail_id_fkey";
 
+alter table "public"."area" add constraint "area_state_id_fkey" FOREIGN KEY (state_id) REFERENCES state(id) not valid;
+
+alter table "public"."area" validate constraint "area_state_id_fkey";
+
 alter table "public"."cart" add constraint "cart_user_detail_id_fkey" FOREIGN KEY (user_detail_id) REFERENCES user_detail(id) not valid;
 
 alter table "public"."cart" validate constraint "cart_user_detail_id_fkey";
@@ -309,17 +313,13 @@ alter table "public"."product_yard" add constraint "product_yard_yard_id_fkey" F
 
 alter table "public"."product_yard" validate constraint "product_yard_yard_id_fkey";
 
-alter table "public"."state" add constraint "state_county_id_fkey" FOREIGN KEY (county_id) REFERENCES county(id) not valid;
+alter table "public"."tax_rate" add constraint "tax_rate_county_id_fkey" FOREIGN KEY (county_id) REFERENCES county(id) not valid;
 
-alter table "public"."state" validate constraint "state_county_id_fkey";
+alter table "public"."tax_rate" validate constraint "tax_rate_county_id_fkey";
 
-alter table "public"."tax_rate" add constraint "tax_rate_state_id_fkey" FOREIGN KEY (state_id) REFERENCES state(id) not valid;
+alter table "public"."yard" add constraint "yard_county_id_fkey" FOREIGN KEY (county_id) REFERENCES county(id) not valid;
 
-alter table "public"."tax_rate" validate constraint "tax_rate_state_id_fkey";
-
-alter table "public"."yard" add constraint "yard_state_id_fkey" FOREIGN KEY (state_id) REFERENCES state(id) not valid;
-
-alter table "public"."yard" validate constraint "yard_state_id_fkey";
+alter table "public"."yard" validate constraint "yard_county_id_fkey";
 
 alter table "public"."yard" add constraint "yard_vendor_id_fkey" FOREIGN KEY (vendor_id) REFERENCES vendor(id) not valid;
 
