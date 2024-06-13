@@ -1,0 +1,15 @@
+id,name,description,sku,image_url,details,capacity,options,fuels,models,category_id,equipment_id
+98a14daa-3feb-400d-9148-06fc5a4b05c6,12' Push Around Single Man Lift,12' Push Around Electric,electric-single-man-lift-working-height-18-or-similar,,,200,,Batteries,,126fa3e2-dcc6-48e8-834f-5519bdebcdaa,1
+dd196b5e-504f-48a1-9c23-3cc70194b429,20' Push Around Single Man Lift,20' Push Around Electric,electric-single-man-lift-working-height-26-or-similar,,,200,,Batteries,,d45fd82b-82e4-48b4-92b3-adcace7e51ef,2
+f3bdb9c7-4f26-46ea-8c83-05f9e65be466,19' Electric Scissor Lift,19' Electric Scissor Lift,electric-scissor-lift-working-height-25-or-similar,,,500,,Batteries,,d45fd82b-82e4-48b4-92b3-adcace7e51ef,3
+cea3e416-9105-4ea1-82e8-947f3bc041dd,26' Narrow Electric Scissor Lift,26' Narrow Electric Scissor Lift,electric-scissor-lift-working-height-32-or-similar,,,500,,Batteries,,d45fd82b-82e4-48b4-92b3-adcace7e51ef,4
+981d0f68-9806-4563-bc9b-1d25648c1d5e,26' Wide Electric Scissor Lift,26' Wide Electric Scissor Lift,electric-scissor-lift-working-height-38-or-similar,,,800,,Batteries,,d45fd82b-82e4-48b4-92b3-adcace7e51ef,5
+86a40de5-c3c0-485c-9867-22607e310e22,32' Narrow Electric Scissor Lift,32' Narrow Electric Scissor Lift,electric-scissor-lift-working-height-38-narrow-or-similar,,,500,,Batteries,,d45fd82b-82e4-48b4-92b3-adcace7e51ef,6
+15fb4af2-4a12-4c36-b3d8-1c99e9b164d4,32' Wide Electric Scissor LIft,32' Wide Electric Scissor LIft,electric-scissor-lift-working-height-38-wide-or-similar,,,500,,Batteries,,d45fd82b-82e4-48b4-92b3-adcace7e51ef,7
+91f30c3c-4a53-494c-be8c-f687ce25782d,40' Electric Slab Scissor Lift,40' Electric Slab Scissor Lift,electric-scissor-lift-working-height-46-slab-or-similar,,,770,,Batteries,,d45fd82b-82e4-48b4-92b3-adcace7e51ef,8
+06d8c2bc-cb30-4f26-9099-a5b7f733f4ac,40' Wide 47' Electric Scissor Lift,40' Wide 47' Electric Scissor Lift,electric-scissor-lift-working-height-46-or-similar,,,550,,Batteries,,d45fd82b-82e4-48b4-92b3-adcace7e51ef,9
+d1c30b3e-2de6-4e9f-9ffb-4f73132378bd,30' Electric Articulating Jib Boom Lift,30' Electric Articulating Jib Boom Lift,electric-boom-lift-articulating-working-height-36-or-similar,,,500,,Batteries,,22923a98-7988-4f84-bb18-dd131b4c6528,10
+7da0fa1d-4c88-47c6-b12f-4d1997bcda65,40' Electric Articulating Jib Boom Lift,40' Electric Articulating Jib Boom Lift,electric-boom-lift-articulating-working-height-46-or-similar,,,500,,Batteries,,22923a98-7988-4f84-bb18-dd131b4c6528,11
+2b06810b-1af1-481b-a709-1050998096b7,45' Electric Articulating Jib Boom Lift,45' Electric Articulating Jib Boom Lift,electric-boom-lift-articulating-working-height-51-or-similar,,,500,,Batteries,,22923a98-7988-4f84-bb18-dd131b4c6528,12
+a6c78763-5ea5-4f44-85e5-42166b8d2de3,5k Propane Forklift Non-Marking,5k Propane Forklift Non-Marking,5k-propane-forklift,,,5000,,Gas,,36db075e-d7e4-4e59-a442-71874c16034f,13
+2d729bb0-8bcc-409f-94fb-026f93718eaa,5k Propane Forklift Non-Marking,5k Propane Forklift Non-Marking,5k-propane-forklift,,,5000,,Gas,,36db075e-d7e4-4e59-a442-71874c16034f,14
