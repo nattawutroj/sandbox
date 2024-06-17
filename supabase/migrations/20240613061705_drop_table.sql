@@ -1,5 +1,3 @@
-alter table "public"."product" drop constraint "yard_id_unique";
-
 alter table "public"."product_prices" drop constraint "product_prices_yard_id_fkey";
 
 alter table "public"."product_yard" drop constraint "product_yard_product_yard_id_fkey";
@@ -7,8 +5,6 @@ alter table "public"."product_yard" drop constraint "product_yard_product_yard_i
 alter table "public"."yard" drop constraint "yard_county_id_fkey";
 
 alter table "public"."product_yard" drop constraint "product_yard_pkey";
-
-drop index if exists "public"."yard_id_unique";
 
 drop index if exists "public"."product_yard_pkey";
 
