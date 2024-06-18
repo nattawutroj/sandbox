@@ -11,15 +11,15 @@ create table "public"."address" (
 
 create table "public"."area" (
     "id" uuid not null default gen_random_uuid(),
-    "name" character varying not null,
-    "state_id" uuid not null
+    "state_id" uuid not null,
+    "name" character varying not null
 );
 
 
 create table "public"."cart" (
     "id" uuid not null default gen_random_uuid(),
     "user_detail_id" uuid,
-    "status" "CartStatus" not null default 'Created'::"CartStatus"
+    "status" "CartStatus" default 'Created'::"CartStatus"
 );
 
 
@@ -36,7 +36,8 @@ create table "public"."cart_product" (
 
 create table "public"."category" (
     "id" uuid not null default gen_random_uuid(),
-    "name" character varying not null
+    "name" character varying not null,
+    "image_url" character varying not null
 );
 
 
@@ -91,7 +92,12 @@ create table "public"."product" (
     "fuels" character varying not null,
     "models" character varying not null,
     "category_id" uuid not null,
-    "equipment_id" character varying not null
+    "equipment_id" character varying not null,
+    "max_working_height_cm" integer not null,
+    "machine_width_cm" integer not null,
+    "machine_length_cm" integer not null,
+    "weight" integer not null,
+    "weight_capacity_on_platform" integer not null
 );
 
 
@@ -108,13 +114,12 @@ create table "public"."product_prices" (
     "delivery_distance_minutes" integer not null,
     "apply_tax_rate" boolean not null,
     "rpp_fees" numeric not null default 10,
-    "fees" numeric not null default 8,
-    "weight" integer not null default 0
+    "fees" numeric not null default 8
 );
 
 
 create table "public"."product_yard" (
-    "product_yard_id" uuid not null,
+    "product_id" uuid not null,
     "yard_id" uuid not null
 );
 
@@ -127,14 +132,14 @@ create table "public"."state" (
 
 create table "public"."tax_rate" (
     "id" uuid not null default gen_random_uuid(),
+    "county_id" uuid not null,
     "zipcode" character varying not null,
     "tax_region_name" character varying not null,
     "state_rate" numeric not null default 0.06,
     "county_rate" numeric not null default 0.0025,
     "city_rate" numeric not null default 0,
     "special_rate" numeric not null default 0.0325,
-    "risk_level" integer not null default 0,
-    "county_id" uuid not null
+    "risk_level" integer not null default 0
 );
 
 
@@ -163,9 +168,9 @@ create table "public"."visitor" (
 create table "public"."yard" (
     "id" uuid not null default gen_random_uuid(),
     "vendor_id" uuid not null,
+    "county_id" uuid not null,
     "name" character varying not null,
-    "address" character varying not null,
-    "county_id" uuid not null
+    "address" character varying not null
 );
 
 
@@ -189,7 +194,7 @@ CREATE UNIQUE INDEX product_pkey ON public.product USING btree (id);
 
 CREATE UNIQUE INDEX product_prices_pkey ON public.product_prices USING btree (id);
 
-CREATE UNIQUE INDEX product_yard_pkey ON public.product_yard USING btree (product_yard_id, yard_id);
+CREATE UNIQUE INDEX product_yard_pkey ON public.product_yard USING btree (product_id, yard_id);
 
 CREATE UNIQUE INDEX state_pkey ON public.state USING btree (id);
 
@@ -200,8 +205,6 @@ CREATE UNIQUE INDEX user_detail_pkey ON public.user_detail USING btree (id);
 CREATE UNIQUE INDEX vendor_pkey ON public.vendor USING btree (id);
 
 CREATE UNIQUE INDEX visitor_pkey ON public.visitor USING btree (id);
-
-CREATE UNIQUE INDEX yard_id_unique ON public.product USING btree (yard_id);
 
 CREATE UNIQUE INDEX yard_pkey ON public.yard USING btree (id);
 
@@ -295,8 +298,6 @@ alter table "public"."product" add constraint "product_category_id_fkey" FOREIGN
 
 alter table "public"."product" validate constraint "product_category_id_fkey";
 
-alter table "public"."product" add constraint "yard_id_unique" UNIQUE using index "yard_id_unique";
-
 alter table "public"."product_prices" add constraint "product_prices_product_id_fkey" FOREIGN KEY (product_id) REFERENCES product(id) not valid;
 
 alter table "public"."product_prices" validate constraint "product_prices_product_id_fkey";
@@ -305,9 +306,9 @@ alter table "public"."product_prices" add constraint "product_prices_yard_id_fke
 
 alter table "public"."product_prices" validate constraint "product_prices_yard_id_fkey";
 
-alter table "public"."product_yard" add constraint "product_yard_product_yard_id_fkey" FOREIGN KEY (product_yard_id) REFERENCES product(yard_id) not valid;
+alter table "public"."product_yard" add constraint "product_yard_product_id_fkey" FOREIGN KEY (product_id) REFERENCES product(id) not valid;
 
-alter table "public"."product_yard" validate constraint "product_yard_product_yard_id_fkey";
+alter table "public"."product_yard" validate constraint "product_yard_product_id_fkey";
 
 alter table "public"."product_yard" add constraint "product_yard_yard_id_fkey" FOREIGN KEY (yard_id) REFERENCES yard(id) not valid;
 
